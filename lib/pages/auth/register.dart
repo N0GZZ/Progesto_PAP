@@ -233,18 +233,18 @@ class _RegisterState extends State<Register> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        final responseusername = await supabase.from('user').select('username').eq('username', _username.text).execute();
-                        final responseemail = await supabase.from('user').select('email').eq('email', _email.text).execute();
+                        final responseusername = await supabase.from('user').select('username').eq('username', _username.text).maybeSingle();
+                        final responseemail = await supabase.from('user').select('email').eq('email', _email.text).maybeSingle();
 
                         if(_password.text != _confirmpassword.text){
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text('As passwords não coincidem!')),
                           );
-                        }else if(responseusername.data.isNotEmpty){
+                        }else if(responseusername != null){
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text('Este username já existe!')),
                           );
-                        }else if(responseemail.data.isNotEmpty){
+                        }else if(responseemail != null){
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text('Este email já está em uso!')),
                           );
@@ -268,7 +268,7 @@ class _RegisterState extends State<Register> {
                       }
 
                       //Navigator.pushNamed(context, '/homePage'); --> Chamar Página
-                    }
+                    },
                     child: Text(
                       'Registar', 
                       style: TextStyle(
