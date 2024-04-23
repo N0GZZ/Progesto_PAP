@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'user',
-      home: Login(),
+      home: splash(),
       routes: {
           '/splashPage': (context) => splash(),
           '/registo':(context) => Register(),

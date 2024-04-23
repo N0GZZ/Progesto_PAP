@@ -252,7 +252,7 @@ class _RegisterState extends State<Register> {
                           await supabase.from('user').insert({
                             'username' : _username.text,
                             'email' : _email.text,
-                            'password' : _password.text
+                            'password_hash' : _password.text
                           });
 
                           ScaffoldMessenger.of(context).showSnackBar(
