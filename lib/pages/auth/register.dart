@@ -26,16 +26,16 @@ class _RegisterState extends State<Register> {
     return Form(
       key: _formKey,
       child: Scaffold(
-        backgroundColor: Color(0xFFEEEEEE),
+        backgroundColor: Color.fromARGB(255, 56, 55, 55),
         body: Padding(        
           padding: EdgeInsets.only(top: 50, left: 550.0, right: 550, bottom: 50),
           child: Container(
             decoration: BoxDecoration(
-              color: Color(0xFF222831),
+              color: Color(0xFF252525),
               borderRadius: BorderRadius.circular(60),
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xFF222831).withOpacity(0.5),
+                  color: Color(0xFF252525).withOpacity(0.5),
                   spreadRadius: 5,
                   blurRadius: 7,
                   offset: Offset(0, 3),
@@ -56,7 +56,7 @@ class _RegisterState extends State<Register> {
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w100,
-                      color: Color(0xFF76ABAE),
+                      color: Color(0xFFAF0404),
                     ),
                   ),
                 ),
@@ -84,7 +84,7 @@ class _RegisterState extends State<Register> {
                           borderRadius: BorderRadius.circular(8.0),
                           borderSide: BorderSide.none,
                         ),
-                        fillColor: Color(0xFF31363F),
+                        fillColor: Color(0xFF414141),
                         filled: true,
                         labelText: 'Username',
                         labelStyle: TextStyle(
@@ -116,7 +116,7 @@ class _RegisterState extends State<Register> {
                           borderRadius: BorderRadius.circular(8.0),
                           borderSide: BorderSide.none,
                         ),
-                        fillColor: Color(0xFF31363F),
+                        fillColor: Color(0xFF414141),
                         filled: true,
                         labelText: 'Email',
                         labelStyle: TextStyle(
@@ -148,7 +148,7 @@ class _RegisterState extends State<Register> {
                           borderRadius: BorderRadius.circular(8.0),
                           borderSide: BorderSide.none,
                         ),
-                        fillColor: Color(0xFF31363F),
+                        fillColor: Color(0xFF414141),
                         filled: true,
                         labelText: 'Password',
                         labelStyle: TextStyle(
@@ -180,7 +180,7 @@ class _RegisterState extends State<Register> {
                           borderRadius: BorderRadius.circular(8.0),
                           borderSide: BorderSide.none,
                         ),
-                        fillColor: Color(0xFF31363F),
+                        fillColor: Color(0xFF414141),
                         filled: true,
                         labelText: 'Confirmar Password',
                         labelStyle: TextStyle(
@@ -198,34 +198,12 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
       
-                // Padding(
-                //   padding: EdgeInsets.only(top: 5, right: 40),
-                //   child: Align(
-                //     alignment: Alignment.centerRight,
-                //     child: MouseRegion(
-                //       cursor: SystemMouseCursors.click,
-                //       child: GestureDetector(
-                //         onTap: () {Navigator.pushNamed(context, '/redefinirPassword');},
-                //         child: Text(
-                //           'Esqueceu a sua password?',   
-                //           style: TextStyle(
-                //             fontSize: 15,
-                //             fontWeight: FontWeight.w100,
-                //             decoration: TextDecoration.underline,
-                //             decorationColor: Color(0xFF76ABAE),
-                //             color: Color(0xFF76ABAE),
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-      
+                
                 Padding(
                   padding: EdgeInsets.only(top: 20, left: 40, right: 40),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF76ABAE),
+                      backgroundColor: Color(0xFFFF0000),
                       minimumSize: Size(double.infinity, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
@@ -308,8 +286,8 @@ class _RegisterState extends State<Register> {
                                 fontSize: 15,
                                 fontWeight: FontWeight.w100,
                                 decoration: isHovering ? TextDecoration.underline : TextDecoration.none,
-                                decorationColor: Color(0xFF76ABAE),
-                                color: Color(0xFF76ABAE),
+                                decorationColor: Color(0xFFAF0404),
+                                color: Color(0xFFAF0404),
                               ),
                             ),
                           ),
