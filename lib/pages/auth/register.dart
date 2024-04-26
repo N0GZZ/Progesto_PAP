@@ -3,6 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:progesto/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
+
+
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -18,10 +23,13 @@ class _RegisterState extends State<Register> {
   TextEditingController _email = TextEditingController();
   TextEditingController _confirmpassword = TextEditingController();
   bool isHovering = false;
+  
+
+
 
   
 
-  @override
+  @override  
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
@@ -227,10 +235,28 @@ class _RegisterState extends State<Register> {
                             const SnackBar(content: Text('Este email já está em uso!')),
                           );
                         }else{
+                          Future<void> sendEmail() async {
+                            final Email email = Email(
+                              body: 'Email body content',
+                              subject: 'Email Subject',
+                              recipients: [_email.text],
+                              cc: ['jpedrooliveira06@gmail.com'],
+                              bcc: [],
+                              attachmentPaths: [],
+                              isHTML: false,
+                            );
+
+                            try {
+                              await FlutterEmailSender.send(email);
+                            } catch (error) {
+                              print('Error sending email: $error');
+                            }
+                          }
+                          
                           await supabase.from('user').insert({
                             'username' : _username.text,
                             'email' : _email.text,
-                            'password_hash' : _password.text
+                            'password_hash' : md5.convert(utf8.encode(_password.text)).toString()
                           });
 
                           ScaffoldMessenger.of(context).showSnackBar(
