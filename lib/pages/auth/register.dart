@@ -36,7 +36,7 @@ class _RegisterState extends State<Register> {
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 56, 55, 55),
         body: Padding(        
-          padding: EdgeInsets.only(top: 50, left: 550.0, right: 550, bottom: 50),
+          padding: EdgeInsets.only(top: 50, left: 550.0, right: 550, bottom: 5),
           child: Container(
             decoration: BoxDecoration(
               color: Color(0xFF252525),
@@ -166,6 +166,7 @@ class _RegisterState extends State<Register> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
+                           
                           return 'Porfavor insira uma password';
                         }
                         return null;
