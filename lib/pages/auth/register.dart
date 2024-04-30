@@ -1,11 +1,12 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:mailer/smtp_server.dart';
 import 'package:progesto/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:mailer/mailer.dart';
 
 
 
@@ -236,23 +237,19 @@ class _RegisterState extends State<Register> {
                             const SnackBar(content: Text('Este email já está em uso!')),
                           );
                         }else{
-                          Future<void> sendEmail() async {
-                            final Email email = Email(
-                              body: 'Email body content',
-                              subject: 'Email Subject',
-                              recipients: [_email.text],
-                              cc: ['jpedrooliveira06@gmail.com'],
-                              bcc: [],
-                              attachmentPaths: [],
-                              isHTML: false,
-                            );
+                          var username = 'progesto.service@gmail.com';
+                            var token = 'enidwoborlzhjmkn';
 
-                            try {
-                              await FlutterEmailSender.send(email);
-                            } catch (error) {
-                              print('Error sending email: $error');
-                            }
-                          }
+                            final smtpClient = gmail(username, token);
+                            final message = Message()
+                              ..from = Address( '$username', 'Progesto')
+                              ..recipients.add(_email.text)
+                              ..subject = 'Bem-vindo ao Progesto'
+                              ..text = 'Obrigado por se registar no Progesto!'
+                              ..html = "<h1>Obrigado por se registar no Progesto!</h1>";
+
+                            final report = await send (message, smtpClient);
+                            print('Message sent. $report');
                           
                           await supabase.from('user').insert({
                             'username' : _username.text,
